@@ -1,0 +1,90 @@
+{
+  "users": [
+    {
+      "name": "Amina",
+      "dob": "2001-01-05",
+      "phone": "9930604143",
+      "password": "123",
+      "contacts": [],
+      "id": 1696755668761
+    },
+    {
+      "name": "Ajay",
+      "password": "123",
+      "phone": "123456789",
+      "dob": "2023-10-04",
+      "id": 1696756216626
+    },
+    {
+      "name": "Ajay",
+      "password": "123",
+      "phone": "123456789",
+      "dob": "2023-10-03",
+      "id": 1696756622208
+    },
+    {
+      "name": "raj",
+      "password": "123",
+      "phone": "123456789",
+      "dob": "2023-10-03",
+      "id": 1696756898273
+    },
+    {
+      "name": "TEst",
+      "password": "123",
+      "phone": "123456789",
+      "dob": "2023-10-05",
+      "id": 1696763011993
+    },
+    {
+      "name": "abc",
+      "password": "123",
+      "phone": "765",
+      "dob": "2023-10-04",
+      "id": 1696763285434
+    },
+    {
+      "name": "umang",
+      "password": "123",
+      "phone": "9372663525",
+      "dob": "2001-07-18",
+      "id": 1697625726211,
+      "contacts": [
+        {
+          "name": "qwert",
+          "phone": "2345",
+          "favourite": true
+        },
+        {
+          "name": "asdfg1234",
+          "phone": "asdf",
+          "favourite": true
+        }
+      ]
+    },
+    {
+      "name": "shreyas",
+      "dob": "2023-10-03",
+      "phone": "123456789",
+      "password": "123",
+      "contacts": [
+        {
+          "name": "fgh",
+          "phone": "sdfgh",
+          "favourite": true
+        },
+        {
+          "name": "mnbvc",
+          "phone": "fghj",
+          "favourite": true
+        },
+        {
+          "name": "bcx",
+          "phone": "dfgb",
+          "favourite": false
+        }
+      ],
+      "id": 1697693701882
+    }
+  ]
+}

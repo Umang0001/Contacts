@@ -1,0 +1,63 @@
+<ng-container *ngIf="showAddContact">
+    <app-add-contact (userContacts)="setContacts($event)" ></app-add-contact>
+</ng-container>
+<div class="wrapper container d-flex">
+    <div class="col-md-4 col-sm-12 col-12 profile">
+        <app-profile></app-profile>
+    </div>
+    <div class="col-md-8 col-sm-12 col-12 contacts">
+        <ng-container *ngIf="!loading && allContacts.length">
+            
+            <div class="head-wrapper d-flex">
+                <h3>Contacts List</h3>
+                <div class="radio-wrapper">
+                    <label for="all">
+                        <span>All Contacts</span>
+                        <input type="radio" name="list-type" value="all" id="all" (change)="handleContactsType('all')" checked>
+                    </label>
+                    <label for="favourite">
+                        <span>Favourites</span>
+                        <input type="radio" name="list-type" value="favourite" id="favourite" (change)="handleContactsType('favourite')">
+                    </label>
+                </div>
+            </div>
+            <div class="contacts-wrapper d-flex">
+        
+                <div *ngIf="contacts.length < 1">
+                    No Favoutite Contacts
+                </div>
+                <ng-container *ngFor="let contact of contacts;let i = index">
+                    <div class="contact hover d-flex" [ngClass]="contact.favourite ? 'favourite': ''">
+                        <div class="profile-img"></div>
+                        <div>{{contact?.name}}</div>
+                        <div>{{contact?.phone}}</div>
+                        <div class="action-wrapper">
+                            <button class="btn btn-sm btn-dark" (click)="handleRemoveContact(contact?.name)">Delete</button>
+                            <input id="{{'check-'+i}}" (change)="handleFavourite(contact?.name,i)" [checked]="contact?.favourite" type="checkbox">
+                            <label for="{{'check-'+i}}">&#9829;</label>
+            
+                        </div>
+                    </div>
+                </ng-container>
+                
+            </div>
+        </ng-container>
+        <div class="no-contact-wrapper" *ngIf="!loading && !allContacts.length">
+            <h5>No contacts to show</h5>
+            <button (click)="showAddContactForm()" class="btn btn-sm btn-primary">Add Contact</button>
+        </div>
+
+
+        <app-contacts-shimmer *ngIf="loading"></app-contacts-shimmer>
+    </div>
+</div>
+
+
+
+
+ <ng-template #elseBlock>
+   
+</ng-template>
+
+
+

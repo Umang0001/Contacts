@@ -1,0 +1,10 @@
+<div class="wrapper">
+<h3>Sign-up</h3>
+    <form [formGroup]="signupForm" (ngSubmit)="handleSignup()">
+    <input class="name" type="text" placeholder="Enter username" formControlName="name">
+    <input type="text" placeholder="Enter password" formControlName="password">
+    <input type="text" placeholder="Enter phone number" formControlName="phone">
+    <input type="date" placeholder="Enter D.O.B." formControlName="dob">
+    <button class="btn btn-primary btn-sm" [disabled]="!signupForm.valid">Signup</button>
+</form>
+</div>
