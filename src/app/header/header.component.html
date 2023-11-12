@@ -1,4 +1,11 @@
-<div class="wrapper container">
+<div class="wrapper container desktop">
+    <div class="burger-icon">
+        <div class="burger" (click)="handleBurgerMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
     <div class="logo-wrapper">
         <img class="logo" src="/assets/logo.jpeg" alt="logo">
         <span>Contacts Management</span>
@@ -22,3 +29,27 @@
         </li>
     </ul>
 </div>
+
+
+<div class="mobile-aside hide" (click)="closeMobileMenu()"></div>
+<div class="burger-menu">
+    <button class="close" (click)="closeMobileMenu()">X</button>
+    <h3>Menu</h3>
+    
+    <ul class="menus container" *ngIf="!isLoggedIn">
+        <li class="menu"><a (click)="closeMobileMenu()" routerLink="login" class="btn btn-sm btn-primary">login</a></li>
+        <li class="menu"><a (click)="closeMobileMenu()" routerLink="sign-up" class="btn btn-sm btn-primary">signup</a></li>
+    </ul>
+    <ul class="actions container" *ngIf="isLoggedIn">
+        <li class="action"><button class="btn btn-sm btn-primary" (click)="handleAddContact()">Add Contact</button></li>
+        <ul>
+             <li class="setting">
+                <a (click)="closeMobileMenu()" routerLink="/dashboard/change-profile">Change profile</a>
+            </li>
+            <li class="setting">
+                <a (click)="handleLogout()">Logout</a>
+            </li>
+        </ul>
+    </ul>
+</div>
+

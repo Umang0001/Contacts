@@ -3,6 +3,13 @@ ul.menus,ul.actions{
     justify-content: flex-end;
     column-gap: 10px;
     list-style: none;
+    
+}
+
+.desktop ul.menus, .desktop ul.actions{
+    @media screen and (max-width:767px) {
+        display: none;
+    }
 
 }
 .wrapper{
@@ -11,6 +18,12 @@ ul.menus,ul.actions{
     border-bottom: 1px solid black;
     position: relative;
     display: flex;
+
+    .desktop{
+        @media only screen and (max-width : 767px){
+            display: none;
+        }
+    }
 }
 a,button{
     text-transform: capitalize;
@@ -20,12 +33,15 @@ a,button{
     width: 30px;
     align-self: center;
 
+
 }
 
 .logo-wrapper{
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 5px;
+    flex-grow: 1;
     span{
         white-space: nowrap;
         font-weight: 900;
@@ -33,7 +49,7 @@ a,button{
 
 }
 
-.settings{
+.desktop .settings{
     position: relative;
     ul{
         list-style: none;
@@ -52,6 +68,7 @@ a,button{
                 margin-bottom: 5px;
                 a{
                     text-decoration: none;
+                    cursor: pointer;
                     &:hover{
                         text-decoration: underline  ;
                     }
@@ -76,3 +93,120 @@ a,button{
     }
 
 }
+.burger-icon{
+    border: 1px solid;
+    width: 40px;
+    position: absolute;
+    border-radius: 3px;
+    left: 4;
+    top: -7px;
+    z-index: 2;
+    background-color: #ffffff;
+    border: 2px solid black;
+    padding: 9px;
+    transform: scale(.9);
+    @media (min-width : 768px){
+        display: none;
+    }
+    .burger{
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        
+    }
+    span{
+        border-bottom: 2px solid;
+    }
+}
+
+.burger-menu{
+    position: fixed;
+    left: -54%;
+    top: 0;
+    min-width: 50%;
+    z-index: 4;
+    height: 100vh;
+    background-color: #ffffff;
+    transition: left .5s ease-in-out;
+    @media (min-width : 768px) {
+        display: none;
+    }
+    &.open{
+        left: 0;
+    }
+    .close{
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        padding: 8px 10px;
+        background: transparent;
+        border: 1px solid;
+        line-height: 1;
+    }
+    h3{
+        text-align: center;
+        margin-top: 25px;
+    }
+    
+    .menus{
+        flex-direction: column;
+        gap: 5px;
+        li{
+            padding: 2px 30px;
+        }
+        a,button{
+            width: 100%;
+            display: inline-block;
+
+        }
+    }
+    .actions{
+        flex-direction: column;
+        gap: 5px;
+        li{
+            padding: 2px 30px;
+            
+        }
+        li >a,button{
+            width: 100%;
+            display: inline-block;
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            a{
+                color: black;
+                text-decoration: none;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+
+    }
+}
+
+.mobile-aside{
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    opacity: .5;
+    z-index: 3;
+    &.hide{
+        display: none;
+    }
+}
+
+    
+
+
+    @media only screen and (min-width:768px){
+        .burger-menu,.mobile-aside{
+            display: none;
+        }
+    }
