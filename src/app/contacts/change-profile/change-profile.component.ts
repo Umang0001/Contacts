@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CommonService } from 'src/app/common.service';
 import { UserDataService } from '../user-data.service';
@@ -12,7 +13,8 @@ import { UserDataService } from '../user-data.service';
 export class ChangeProfileComponent {
   constructor(
     private _userService : UserDataService,
-    private _formBuilder : FormBuilder
+    private _formBuilder : FormBuilder,
+    private _router : Router
   )
   {}
 
@@ -45,6 +47,7 @@ export class ChangeProfileComponent {
         }
         this._userService.updateUser(userId,updatedUser).subscribe(e=>{
           console.log(e);
+          this._router.navigate(["/dashboard"])
           
         })
       }

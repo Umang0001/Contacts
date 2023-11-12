@@ -1,11 +1,16 @@
 {
   "users": [
     {
-      "name": "Amina",
+      "name": "Aminatest",
       "dob": "2001-01-05",
       "phone": "9930604143",
       "password": "123",
-      "contacts": [],
+      "contacts": [
+        {
+          "name": "2345",
+          "phone": "2345"
+        }
+      ],
       "id": 1696755668761
     },
     {
@@ -44,11 +49,10 @@
       "id": 1696763285434
     },
     {
-      "name": "umang",
-      "password": "123",
-      "phone": "9372663525",
+      "name": "umang01",
       "dob": "2001-07-18",
-      "id": 1697625726211,
+      "phone": "9372663525",
+      "password": "123",
       "contacts": [
         {
           "name": "qwert",
@@ -58,9 +62,10 @@
         {
           "name": "asdfg1234",
           "phone": "asdf",
-          "favourite": true
+          "favourite": false
         }
-      ]
+      ],
+      "id": 1697625726211
     },
     {
       "name": "shreyas",
@@ -69,22 +74,32 @@
       "password": "123",
       "contacts": [
         {
-          "name": "fgh",
-          "phone": "sdfgh",
-          "favourite": true
+          "name": "asdf",
+          "phone": "234"
         },
         {
-          "name": "mnbvc",
-          "phone": "fghj",
-          "favourite": true
+          "name": "asd",
+          "phone": "2345"
         },
         {
-          "name": "bcx",
-          "phone": "dfgb",
-          "favourite": false
+          "name": "fff",
+          "phone": "234567"
         }
       ],
       "id": 1697693701882
+    },
+    {
+      "name": "umang",
+      "password": "123",
+      "phone": "9372663525",
+      "dob": "2001-07-18",
+      "id": 1699770900341,
+      "contacts": [
+        {
+          "name": "1234",
+          "phone": "2345"
+        }
+      ]
     }
   ]
 }

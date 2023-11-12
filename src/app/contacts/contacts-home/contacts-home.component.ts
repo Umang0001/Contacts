@@ -46,7 +46,7 @@ export class ContactsHomeComponent {
 
   setContacts(contact:any){
     this.allContacts.push(contact);
-    let filterType= this._elemRef.nativeElement.querySelector('input[name="list-type"]:checked')?.value;
+    let filterType = this._elemRef.nativeElement.querySelector('input[name="list-type"]:checked')?.value || "all";
     this.handleContactsType(filterType)
     
     
