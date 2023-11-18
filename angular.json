@@ -100,15 +100,15 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "repository": "git@github.com:Umang0001/Contacts.git",
+            "branch": "gh-pages"
+          }
         }
       }
-    }
-  },
-  "deploy": {
-    "builder": "@angular/fire:deploy",
-    "options": {
-      "repository": "git@github.com:Umang0001/Contacts.git",
-      "branch": "gh-pages"
     }
   }
 }
