@@ -83,6 +83,8 @@ export class ContactsHomeComponent {
       }
 
       this._userService.updateUser(userId,updatedUser).subscribe()
+      let filterType = this._elemRef.nativeElement.querySelector('input[name="list-type"]:checked')?.value;
+      this.handleContactsType(filterType)
   }
 
   handleContactsType(type:string){
@@ -103,6 +105,10 @@ export class ContactsHomeComponent {
       default:
         break;
     }
+  }
+
+  handleAddContact(){
+    this._commonService.showAddContact.next(true)
   }
 
 }

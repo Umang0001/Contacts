@@ -1,6 +1,12 @@
 .wrapper{
     flex-wrap: wrap;
 }
+.mob-add-contact{
+    display: block;
+    @media (min-width : 768px){
+        display: none;
+    }
+}
 
 .no-contact-wrapper{
     text-align: center;
