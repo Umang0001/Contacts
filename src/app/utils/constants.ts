@@ -1,1 +1,0 @@
-export const URL = "https://my-json-server.typicode.com/umang0001/contacts-list/users";
