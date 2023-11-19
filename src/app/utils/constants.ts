@@ -1,1 +1,1 @@
-export const URL = "https://my-json-server.typicode.com/umang0001/contacts-list/users";
+export const URL = "https://contacts-7cwb.onrender.com/users";
