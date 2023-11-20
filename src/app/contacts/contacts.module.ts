@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ChangeProfileComponent } from './change-profile/change-profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContactsShimmerComponent } from './contacts-shimmer/contacts-shimmer.component';
+import { ProfileDetailsShimmerComponent } from './profile-details-shimmer/profile-details-shimmer.component';
 
 const routes :Routes = [
   { path:"",component : DashboardComponent,children:[
@@ -25,7 +26,8 @@ const routes :Routes = [
     AddContactComponent,
     ChangeProfileComponent,
     DashboardComponent,
-    ContactsShimmerComponent
+    ContactsShimmerComponent,
+    ProfileDetailsShimmerComponent
   ],
   imports: [
     CommonModule,
