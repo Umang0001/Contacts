@@ -16,7 +16,10 @@ export class ProfileComponent {
   ngOnInit(){
     let userId=localStorage.getItem("userId")!
     this._userService.getPersonalData(userId).subscribe((e:any)=>{
-      this.userDetails=e
+      setTimeout(() => {
+        
+        this.userDetails=e
+      }, 2000);
       
     })
   }

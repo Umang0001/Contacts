@@ -18,7 +18,8 @@
 
 .contacts-wrapper{
     flex-wrap: wrap;
-    gap: 15px;
+    justify-content: space-between;
+    row-gap: 20px;
 }
 
 .contacts{
@@ -80,6 +81,10 @@
 
 .head-wrapper{
     justify-content: space-between;
+    @media (max-width : 767px){
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
    .radio-wrapper{
     z-index: 2;
     display: flex;
