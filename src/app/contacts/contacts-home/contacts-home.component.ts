@@ -21,6 +21,8 @@ export class ContactsHomeComponent {
   ){}
   showAddContact=false;
   loading=true;
+  filterType="all"
+  favouriteList:any
 
   ngOnInit(){
     console.log("init");
@@ -92,6 +94,7 @@ export class ContactsHomeComponent {
       case "all":
         this._elemRef.nativeElement.querySelectorAll(".contact").forEach((e:any)=>e.classList.add("hover"))
         this.contacts=this.allContacts;
+        this.filterType="all"
         break;
       case "favourite":
         this._elemRef.nativeElement.querySelectorAll(".contact").forEach((e:any)=>e.classList.remove("hover"))
@@ -100,6 +103,8 @@ export class ContactsHomeComponent {
             return e
           }
         })
+        this.favouriteList=this.contacts
+        this.filterType="favourite"
         break;
 
       default:
@@ -109,6 +114,15 @@ export class ContactsHomeComponent {
 
   handleAddContact(){
     this._commonService.showAddContact.next(true)
+  }
+
+  handleSearch(val:any){
+    if(this.filterType==="all"){
+      this.contacts = this.allContacts.filter((e:any)=>e.name.toLowerCase().includes(val.toLowerCase()))
+    }
+    else{
+      this.contacts = this.favouriteList.filter((e:any)=>e.name.toLowerCase().includes(val.toLowerCase()))
+    }
   }
 
 }

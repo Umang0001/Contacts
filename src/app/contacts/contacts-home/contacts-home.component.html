@@ -3,7 +3,7 @@
 </ng-container>
 <div class="wrapper container d-flex">
     <div class="col-md-4 col-sm-12 col-12 profile">
-        <app-profile></app-profile>
+        <app-profile [userDetails]="userDetails"></app-profile>
     </div>
     <div class="col-md-8 col-sm-12 col-12 contacts">
         <ng-container *ngIf="!loading && allContacts.length">
@@ -21,10 +21,15 @@
                     </label>
                 </div>
             </div>
+            <div class="search-wrapper">
+                <input #search type="text" id="search" placeholder="Search contacts here" (input)="handleSearch(search.value)">
+            </div>
             <div class="contacts-wrapper d-flex">
         
                 <div *ngIf="contacts.length < 1">
-                    No Favoutite Contacts
+                    <p *ngIf="filterType=='favourite'">No Favoutite Contacts</p>
+                    <p *ngIf="filterType=='all'">No Contacts</p>
+                    
                 </div>
                 <ng-container *ngFor="let contact of contacts;let i = index">
                     <div class="contact hover d-flex" [ngClass]="contact.favourite ? 'favourite': ''">
