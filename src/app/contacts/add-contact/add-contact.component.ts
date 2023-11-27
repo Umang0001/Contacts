@@ -22,6 +22,8 @@ export class AddContactComponent {
     nameField.focus();  
   }
 
+  loading=false;
+
   addContactForm=this._formBuilder.group({
     name:["",Validators.required],
     phone:["",Validators.required]
@@ -29,6 +31,7 @@ export class AddContactComponent {
 
   handleAdd(){
     if (this.addContactForm.valid) {
+      this.loading=true
       let userId=localStorage.getItem("userId")!;
       this._userService.getPersonalData(userId).subscribe((e:any)=>{
         if (e) {
@@ -43,6 +46,7 @@ export class AddContactComponent {
           
           this._userService.updateUser(userId,updatedUser).subscribe((res:any)=>{
             console.log(res);
+            this.loading=false
             this.hideAddContact()
             this.userContacts.emit(this.addContactForm.value)
           })

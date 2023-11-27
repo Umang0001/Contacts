@@ -5,7 +5,10 @@
         <form [formGroup]="addContactForm" (ngSubmit)="handleAdd()">
             <input class="name" type="text" formControlName="name" placeholder="Enter name">
             <input type="text" formControlName="phone" placeholder="Enter phone number">
-            <button class="btn btn-sm btn-primary" [disabled]="!addContactForm.valid">Add</button>
+            <button class="btn btn-sm btn-primary" [disabled]="!addContactForm.valid">
+                <span *ngIf="!loading">Add</span>
+                <span *ngIf="loading">Adding...</span>
+            </button>
         </form>
     </div>
 

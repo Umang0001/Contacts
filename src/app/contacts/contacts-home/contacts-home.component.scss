@@ -49,25 +49,21 @@
             padding-bottom: 30px;
         }
         
-        input {
+        .favourite-checkbox {
             display: none;
+            &:checked+.heart{
+
+                background-color: red;
+                &::after,&::before{
+                    background-color: red;
+                }
+            }
+            
           }
           
+
           /* changes the color when selected */
-          input:checked ~ label {
-            color: red;
-          }
-          
-          
-          
-          /* for styling purpose only */
-          label {
-            font-size: 25px;
-            transform: scale(1.7);
-            position: absolute;
-            top: 0;
-            right: 15px;
-          }
+        
     }
 }
 
@@ -105,4 +101,31 @@
     background-position: center center;
     background-repeat: no-repeat;
 
+}
+
+
+.heart{
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    right: 16px;
+    height: 15px;
+    width: 15px;
+    transform: rotate(-45deg) scale(.9);
+    background-color: gray;
+    &::after,&::before{
+        content: "";
+        position: absolute;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background-color: gray;
+    }
+    &::after{
+        top: -8px;
+        left: 0;
+    }
+    &::before{
+        left: 8px;
+    }
 }
