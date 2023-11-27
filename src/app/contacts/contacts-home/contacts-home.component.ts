@@ -22,7 +22,6 @@ export class ContactsHomeComponent {
   showAddContact=false;
   loading=true;
   filterType="all"
-  favouriteList:any
 
   ngOnInit(){
     console.log("init");
@@ -43,6 +42,7 @@ export class ContactsHomeComponent {
   userDetails:any={}
   contacts : any=[]
   allContacts:any = [];
+
 
   
 
@@ -83,6 +83,8 @@ export class ContactsHomeComponent {
         ...this.userDetails,
         contacts:this.contacts
       }
+      console.log(updatedUser);
+      
 
       this._userService.updateUser(userId,updatedUser).subscribe()
       let filterType = this._elemRef.nativeElement.querySelector('input[name="list-type"]:checked')?.value;
@@ -90,20 +92,18 @@ export class ContactsHomeComponent {
   }
 
   handleContactsType(type:string){
+    let searchVal = this._elemRef.nativeElement.querySelector("#search").value;
     switch (type) {
       case "all":
-        this._elemRef.nativeElement.querySelectorAll(".contact").forEach((e:any)=>e.classList.add("hover"))
-        this.contacts=this.allContacts;
+        this.contacts=this.allContacts.filter((e:any)=>e.name.toLowerCase().includes(searchVal.toLowerCase()));
         this.filterType="all"
         break;
       case "favourite":
-        this._elemRef.nativeElement.querySelectorAll(".contact").forEach((e:any)=>e.classList.remove("hover"))
         this.contacts=this.allContacts.filter((e:any)=>{
-          if (e.favourite==true) {
+          if (e.favourite==true && e.name.toLowerCase().includes(searchVal.toLowerCase())) {
             return e
           }
         })
-        this.favouriteList=this.contacts
         this.filterType="favourite"
         break;
 
@@ -121,7 +121,8 @@ export class ContactsHomeComponent {
       this.contacts = this.allContacts.filter((e:any)=>e.name.toLowerCase().includes(val.toLowerCase()))
     }
     else{
-      this.contacts = this.favouriteList.filter((e:any)=>e.name.toLowerCase().includes(val.toLowerCase()))
+      this.contacts = this.allContacts.filter((e:any)=>e.name.toLowerCase().includes(val.toLowerCase()) && e.favourite===true)
+      
     }
   }
 

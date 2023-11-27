@@ -16,6 +16,8 @@ export class LoginComponent {
       private _elemRef : ElementRef
       ){}
 
+      showLoading:boolean=false;
+
     ngOnInit(){
       let userDetails : any = this._commonService.defalutUserDetails
         this.loginForm.get("username")?.setValue(userDetails?.username);
@@ -28,11 +30,12 @@ export class LoginComponent {
     }
 
     loginForm=this._formBuilder.group({
-      username:["",[Validators.required]],
+      username:["",[Validators.required,Validators.minLength(3),Validators.maxLength(12)]],
       password:["",[Validators.required]],
     })  
 
     handleLogin(){
+      this.showLoading=true
       if (this.loginForm.valid) {
         
         const {username,password}=this.loginForm.value;
@@ -45,6 +48,7 @@ export class LoginComponent {
             this._router.navigate(["dashboard"]) 
           }
           else{
+            this.showLoading=false
             alert("Invalid username/password")
           }
           

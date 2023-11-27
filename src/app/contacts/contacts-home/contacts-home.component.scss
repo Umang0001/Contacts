@@ -48,16 +48,7 @@
             padding-top: 30px;
             padding-bottom: 30px;
         }
-        &.favourite{
-            label{
-                display: block;
-            }
-        }
-        &.hover:hover{
-            label{
-                display: block  ;
-            }
-        }
+        
         input {
             display: none;
           }
@@ -76,7 +67,6 @@
             position: absolute;
             top: 0;
             right: 15px;
-            display: none;
           }
     }
 }
@@ -91,6 +81,9 @@
     z-index: 2;
     display: flex;
     gap: 20px;
+    input{
+        width: unset;
+    }
     span{
         margin-right: 7px;
     }

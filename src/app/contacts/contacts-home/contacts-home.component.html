@@ -32,7 +32,7 @@
                     
                 </div>
                 <ng-container *ngFor="let contact of contacts;let i = index">
-                    <div class="contact hover d-flex" [ngClass]="contact.favourite ? 'favourite': ''">
+                    <div class="contact d-flex">
                         <div class="profile-img"></div>
                         <div>{{contact?.name}}</div>
                         <div>{{contact?.phone}}</div>
