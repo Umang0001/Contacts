@@ -38,10 +38,12 @@
                         <div>{{contact?.phone}}</div>
                         <div class="action-wrapper">
                             <button class="btn btn-sm btn-dark" (click)="handleRemoveContact(contact?.name)">Delete</button>
-                            <input id="{{'check-'+i}}" (change)="handleFavourite(contact?.name,i)" [checked]="contact?.favourite" type="checkbox">
-                            <label for="{{'check-'+i}}">&#9829;</label>
-            
+                            <input id="{{'check-'+i}}" class="favourite-checkbox" (change)="handleFavourite(contact?.name,i)" [checked]="contact?.favourite" type="checkbox">
+                            <label class="heart" for="{{'check-'+i}}"></label>
+
+                            
                         </div>
+                        
                     </div>
                 </ng-container>
                 
