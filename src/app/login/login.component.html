@@ -1,8 +1,18 @@
 <div class="wrapper">
     <h3>Login</h3>
     <form id="login-form" [formGroup]="loginForm" (ngSubmit)="handleLogin()">
-        <input class="name" type="text" placeholder="Enter username" formControlName="username">
-        <input type="text" placeholder="Enter password" formControlName="password">
-        <button class="btn btn-primary btn-sm" [disabled]="!loginForm.valid">Login</button>
+        <div class="field">
+            <input class="name" type="text" placeholder="Enter username" formControlName="username">
+            <p [ngClass]="(loginForm.controls.username.invalid && loginForm.controls.username.dirty)?'':'hidden'" class="error">Username should be of minimum length 3 and maximum 12.</p>
+        </div>
+        
+        <input type="password" placeholder="Enter password" formControlName="password">
+        <button class="btn btn-primary btn-sm" [disabled]="!loginForm.valid">
+            
+            <span *ngIf="!showLoading">Login</span>
+            <span *ngIf="showLoading">Logging in ....</span>
+        
+        </button>
+        
     </form>
 </div>
