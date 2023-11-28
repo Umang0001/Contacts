@@ -1,14 +1,18 @@
 .wrapper{
-    text-align: center;
+    margin: auto;
+    padding: 0 15px;
     margin-top: 50px;
+    max-width: 400px;
     form{
-        width: fit-content;
         margin: auto;
         display: flex;
         flex-direction: column;
         row-gap: 20px;
         button{
-            align-self: center;
+            align-self: flex-start;
         }
     }
+}
+.hidden{
+    visibility: hidden;
 }
