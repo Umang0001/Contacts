@@ -1,10 +1,22 @@
 <div class="wrapper">
 <h3>Sign-up</h3>
     <form [formGroup]="signupForm" (ngSubmit)="handleSignup()">
-    <input class="name" type="text" placeholder="Enter username" formControlName="name">
-    <input type="password" placeholder="Enter password" formControlName="password">
-    <input type="text" placeholder="Enter phone number" formControlName="phone">
-    <input type="date" placeholder="Enter D.O.B." formControlName="dob">
+        <div class="field">
+            <input class="name" type="text" placeholder="Enter username" formControlName="name">
+            <p [ngClass]="(signupForm.controls.name.invalid && signupForm.controls.name.dirty)?'':'hidden'" class="error">Username should be of minimum length 3 and maximum 12.</p>
+        </div>
+        <div class="field">
+            <input type="password" placeholder="Enter password" formControlName="password">
+            <p [ngClass]="(signupForm.controls.password.invalid && signupForm.controls.password.dirty)?'':'hidden'" class="error">Password should be of minimum length 6 and maximum 15.</p>
+        </div>
+        <div class="field">
+            <input type="number" placeholder="Enter phone number" formControlName="phone">
+            <p [ngClass]="(signupForm.controls.phone.invalid && signupForm.controls.phone.dirty)?'':'hidden'" class="error">Phone number should be of 10 digits only.</p>
+        </div>
+        <div class="field">
+            <input type="date" placeholder="Enter D.O.B." formControlName="dob">
+            <p [ngClass]="(signupForm.controls.dob.invalid && signupForm.controls.dob.dirty)?'':'hidden'" class="error">This is a required field.</p>
+        </div>
     <button class="btn btn-primary btn-sm" [disabled]="!signupForm.valid">Signup</button>
 </form>
 </div>

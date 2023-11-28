@@ -92,7 +92,8 @@ export class ContactsHomeComponent {
   }
 
   handleContactsType(type:string){
-    let searchVal = this._elemRef.nativeElement.querySelector("#search").value;
+    let searchVal = this._elemRef?.nativeElement?.querySelector("#search")?.value || "";
+    
     switch (type) {
       case "all":
         this.contacts=this.allContacts.filter((e:any)=>e.name.toLowerCase().includes(searchVal.toLowerCase()));
