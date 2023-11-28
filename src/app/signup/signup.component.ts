@@ -22,9 +22,9 @@ export class SignupComponent {
   }
 
   signupForm=this._formBuilder.group({
-    name:["",Validators.required,Validators.minLength(3),Validators.maxLength(12)],
-    password:["",Validators.required],
-    phone:["",Validators.required],
+    name:["",[Validators.required,Validators.minLength(3),Validators.maxLength(12)]],
+    password:["",[Validators.required,Validators.minLength(6),Validators.maxLength(15)]],
+    phone:["",[Validators.required,Validators.minLength(10),Validators.maxLength(10)]],
     dob:["",Validators.required]
   })
 
@@ -36,8 +36,8 @@ export class SignupComponent {
           password:e.password
         }
         if (e) {
-          this._commonService.setDefalutUserDetails(userDetails)
-          this._router.navigate(['/login'])
+          localStorage.setItem("userId",e.id)
+          this._router.navigate(['/dashboard'])
         }
         else{
           alert("some error occured")

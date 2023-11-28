@@ -46,9 +46,13 @@ h3{
 
 .error{
     font-size: 11px;
-    margin-top: 2px;
+    position: absolute;
+    top: 100%;
     margin-bottom: 0;
     color: red;
+}
+.field{
+    position: relative;
 }
 
 
