@@ -21,14 +21,30 @@ export class SignupComponent {
     nameField.focus();  
   }
 
+  requiredMsg="This is a required field.";
+  onceSubmitted : boolean = false;
+
   signupForm=this._formBuilder.group({
-    name:["",[Validators.required,Validators.minLength(3),Validators.maxLength(12)]],
+    name:["",[Validators.required,Validators.minLength(3)]],
     password:["",[Validators.required,Validators.minLength(6),Validators.maxLength(15)]],
-    phone:["",[Validators.required,Validators.minLength(10),Validators.maxLength(10)]],
+    phone:["",[Validators.required,Validators.pattern('^[0-9]{10}$')]],
     dob:["",Validators.required]
   })
 
+  validateNumber(event:any) {
+    const keyCode = event.keyCode;
+
+    const excludedKeys = [8, 37, 39, 46];
+
+    if (!((keyCode >= 48 && keyCode <= 57) ||
+      (keyCode >= 96 && keyCode <= 105) ||
+      (excludedKeys.includes(keyCode)))) {
+      event.preventDefault();
+    }
+  }
+
   handleSignup(){
+    this.onceSubmitted=true;
     if (this.signupForm.valid) {
       this._commonService.addUser(this.signupForm.value).subscribe((e:any)=>{
         let userDetails={
@@ -37,6 +53,7 @@ export class SignupComponent {
         }
         if (e) {
           localStorage.setItem("userId",e.id)
+          this._commonService.isLoggedIn.next(true);
           this._router.navigate(['/dashboard'])
         }
         else{

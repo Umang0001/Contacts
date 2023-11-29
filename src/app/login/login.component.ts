@@ -16,7 +16,8 @@ export class LoginComponent {
       private _elemRef : ElementRef
       ){}
 
-      showLoading:boolean=false;
+      showLoading : boolean = false;
+      onceSubmitted : boolean = false
 
     ngOnInit(){
       let userDetails : any = this._commonService.defalutUserDetails
@@ -35,8 +36,9 @@ export class LoginComponent {
     })  
 
     handleLogin(){
-      this.showLoading=true
+      this.onceSubmitted=true
       if (this.loginForm.valid) {
+        this.showLoading=true
         
         const {username,password}=this.loginForm.value;
         this._commonService.getAllUsers().subscribe((res:any) => {

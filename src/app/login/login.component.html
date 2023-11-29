@@ -3,11 +3,18 @@
     <form id="login-form" [formGroup]="loginForm" (ngSubmit)="handleLogin()">
         <div class="field">
             <input class="name" type="text" placeholder="Enter username" formControlName="username">
-            <p [ngClass]="(loginForm.controls.username.invalid && loginForm.controls.username.dirty)?'':'hidden'" class="error">Username should be of minimum length 3 and maximum 12.</p>
+            <p [ngClass]="(loginForm.controls.username.invalid && loginForm.controls.username.touched)|| (this.onceSubmitted===true && loginForm.controls.username.invalid)?'':'hidden'" class="error">
+                <span *ngIf="loginForm.controls.username.value?.length! >= 1 ">Minimum 3 characters required.</span>
+                <span *ngIf="loginForm.controls.username.value?.length! < 1 ">This is a required field.</span>
+            </p>
         </div>
-        
-        <input type="password" placeholder="Enter password" formControlName="password">
-        <button class="btn btn-primary btn-sm" [disabled]="!loginForm.valid">
+        <div class="field">
+            <input type="password" placeholder="Enter password" formControlName="password">
+            <p [ngClass]="(loginForm.controls.password.value?.length! < 1 && loginForm.controls.password.touched)|| (this.onceSubmitted===true && loginForm.controls.password.invalid)?'':'hidden'" class="error">
+                This is a required field.
+            </p>
+        </div>
+        <button class="btn btn-primary btn-sm">
             
             <span *ngIf="!showLoading">Login</span>
             <span *ngIf="showLoading">Logging in ....</span>
