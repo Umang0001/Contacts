@@ -3,20 +3,29 @@
     <form [formGroup]="signupForm" (ngSubmit)="handleSignup()">
         <div class="field">
             <input class="name" type="text" placeholder="Enter username" formControlName="name">
-            <p [ngClass]="(signupForm.controls.name.invalid && signupForm.controls.name.dirty)?'':'hidden'" class="error">Username should be of minimum length 3 and maximum 12.</p>
+            <p [ngClass]="(signupForm.controls.name.invalid && signupForm.controls.name.touched) || (onceSubmitted && signupForm.controls.name.invalid)?'':'hidden'" class="error">
+                <span *ngIf="signupForm.controls.name.value?.length! >= 1">Minimum 3 characters required.</span>
+                <span *ngIf="signupForm.controls.name.value?.length! < 1">{{requiredMsg}}</span>
+            </p>
         </div>
         <div class="field">
             <input type="password" placeholder="Enter password" formControlName="password">
-            <p [ngClass]="(signupForm.controls.password.invalid && signupForm.controls.password.dirty)?'':'hidden'" class="error">Password should be of minimum length 6 and maximum 15.</p>
+            <p [ngClass]="(signupForm.controls.password.invalid && signupForm.controls.password.touched) || (onceSubmitted && signupForm.controls.password.invalid)?'':'hidden'" class="error">
+                <span *ngIf="signupForm.controls.password.value?.length! >= 1">Password should be of minimum length 6 and maximum 15.</span>
+                <span *ngIf="signupForm.controls.password.value?.length! < 1">{{requiredMsg}}</span>
+            </p>
         </div>
         <div class="field">
-            <input type="number" placeholder="Enter phone number" formControlName="phone">
-            <p [ngClass]="(signupForm.controls.phone.invalid && signupForm.controls.phone.dirty)?'':'hidden'" class="error">Phone number should be of 10 digits only.</p>
+            <input type="tel" placeholder="Enter phone number" formControlName="phone" (keydown)="validateNumber($event)">
+            <p [ngClass]="(signupForm.controls.phone.invalid && signupForm.controls.phone.touched) || (onceSubmitted && signupForm.controls.phone.invalid)?'':'hidden'" class="error">
+                <span *ngIf="signupForm.controls.phone.value?.length! >= 1">Phone number should be of 10 digits only.</span>
+                <span *ngIf="signupForm.controls.phone.value?.length! < 1">{{requiredMsg}}</span>
+            </p>
         </div>
         <div class="field">
             <input type="date" placeholder="Enter D.O.B." formControlName="dob">
-            <p [ngClass]="(signupForm.controls.dob.invalid && signupForm.controls.dob.dirty)?'':'hidden'" class="error">This is a required field.</p>
+            <p [ngClass]="(signupForm.controls.dob.invalid && signupForm.controls.dob.touched) || (onceSubmitted && signupForm.controls.dob.invalid)?'':'hidden'" class="error">This is a required field.</p>
         </div>
-    <button class="btn btn-primary btn-sm" [disabled]="!signupForm.valid">Signup</button>
+    <button class="btn btn-primary btn-sm">Signup</button>
 </form>
 </div>
