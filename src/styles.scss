@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 // styles.scss
 :root{
-    --primary-color: rgb(237, 125, 49);
+    --primary-color: rgb(139, 0, 139);
     --secondary-color: 	rgb(108, 95, 91);
     --tertiary-color: rgb(79, 74, 69);
     
@@ -16,8 +16,9 @@
 
   body{
     font-family: "Poppins";
-    color: gray;
+    color: black;
     font-size: 14px;
+    background: rgb(159 118 118 / 16%);
   }
 
 *{
@@ -41,7 +42,6 @@ input{
     font-size: 14px;
     font-weight: 100;
     line-height: 1.42;
-    color: rgba(0,0,0,.8);
     &::placeholder{
         font-size: 12px;
         line-height: 1;
@@ -78,7 +78,7 @@ h3{
     display: inline-block;
     cursor: pointer;
     &:hover{
-        background: linear-gradient(180deg,#f79758 0%,var(--primary-color) 100%);
+        background: linear-gradient(180deg,#dc47dc 0%,var(--primary-color) 100%);
     }
 }
 
