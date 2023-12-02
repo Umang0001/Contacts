@@ -30,14 +30,14 @@ export class ContactsHomeComponent {
       this.showAddContact=e
     })
     let userId=localStorage.getItem("userId")!;
-    setTimeout(() => {
+    // setTimeout(() => {
       this._userService.getPersonalData(userId).subscribe((e:any)=>{
         this.contacts=e.contacts || []
         this.allContacts=e.contacts || []
         this.userDetails=e
         this.loading=false
       })
-    }, 2000);
+    // }, 2000);
   }
   userDetails:any={}
   contacts : any=[]
