@@ -7,8 +7,8 @@
         </div>
     </div>
     <div class="logo-wrapper">
-        <img class="logo" src="/assets/logo.jpeg" alt="logo">
-        <span>Contacts Management</span>
+        <img class="logo" src="/assets/logo.png" alt="logo">
+        <a routerLink="/">Contacts Management</a>
     </div>
     <ul class="menus container" *ngIf="!isLoggedIn">
         <li class="menu"><a routerLink="login" class="btn btn-sm btn-primary">login</a></li>
@@ -36,20 +36,17 @@
     <button class="close" (click)="closeMobileMenu()">X</button>
     <h3>Menu</h3>
     
-    <ul class="menus container" *ngIf="!isLoggedIn">
-        <li class="menu"><a (click)="closeMobileMenu()" routerLink="login" class="btn btn-sm btn-primary">login</a></li>
-        <li class="menu"><a (click)="closeMobileMenu()" routerLink="sign-up" class="btn btn-sm btn-primary">signup</a></li>
+    <ul class="menus container actions" *ngIf="!isLoggedIn">
+        <li class="menu"><a (click)="closeMobileMenu()" routerLink="login">login</a></li>
+        <li class="menu"><a (click)="closeMobileMenu()" routerLink="sign-up">signup</a></li>
     </ul>
     <ul class="actions container" *ngIf="isLoggedIn">
-        <li class="action"><button class="btn btn-sm btn-primary" (click)="handleAddContact()">Add Contact</button></li>
-        <ul>
              <li class="setting">
                 <a (click)="closeMobileMenu()" routerLink="/dashboard/change-profile">Change profile</a>
             </li>
             <li class="setting">
                 <a (click)="handleLogout()">Logout</a>
             </li>
-        </ul>
     </ul>
 </div>
 

@@ -2,7 +2,7 @@
     <app-add-contact (userContacts)="setContacts($event)" ></app-add-contact>
 </ng-container>
 <div class="wrapper container d-flex">
-    <div class="col-md-4 col-sm-12 col-12 profile">
+    <div class="col-md-4 col-sm-12 col-12 profile-wrapper">
         <app-profile [userDetails]="userDetails"></app-profile>
     </div>
     <div class="col-md-8 col-sm-12 col-12 contacts">
@@ -34,12 +34,12 @@
                 <ng-container *ngFor="let contact of contacts;let i = index">
                     <div class="contact d-flex">
                         <div class="profile-img"></div>
-                        <div>{{contact?.name}}</div>
-                        <div>{{contact?.phone}}</div>
+                        <div title="Name">{{contact?.name}}</div>
+                        <div title="Contact Number">{{contact?.phone}}</div>
                         <div class="action-wrapper">
-                            <button class="btn btn-sm btn-dark" (click)="handleRemoveContact(contact?.name)">Delete</button>
+                            <button class="btn btn-sm " (click)="handleRemoveContact(contact?.name)">Delete</button>
                             <input id="{{'check-'+i}}" class="favourite-checkbox" (change)="handleFavourite(contact?.name,i)" [checked]="contact?.favourite" type="checkbox">
-                            <label class="heart" for="{{'check-'+i}}"></label>
+                            <label title="Add to favourite" class="heart" for="{{'check-'+i}}"></label>
 
                             
                         </div>
@@ -48,7 +48,7 @@
                 </ng-container>
                 
             </div>
-            <button class="btn btn-sm btn-dark mx-auto my-3 mob-add-contact" (click)="handleAddContact()">+</button>
+            <button class="btn btn-sm mx-auto my-3 mob-add-contact" (click)="handleAddContact()">Add Contact</button>
 
         </ng-container>
         <div class="no-contact-wrapper" *ngIf="!loading && !allContacts.length">
