@@ -1,6 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { CommonService } from 'src/app/common.service';
 import { UserDataService } from '../user-data.service';
+import { Router } from '@angular/router';
 
 interface Item {
   name: string;
@@ -17,41 +18,47 @@ export class ContactsHomeComponent {
   constructor(
     private _commonService : CommonService,
     private _userService : UserDataService,
-    private _elemRef : ElementRef
+    private _elemRef : ElementRef,
+    private _router : Router
   ){}
   showAddContact=false;
   loading=true;
   filterType="all"
 
   ngOnInit(){
-    console.log("init");
-    
     this._commonService.showAddContact.subscribe((e)=>{
       this.showAddContact=e
     })
     let userId=localStorage.getItem("userId")!;
+    let delayTime :number = 0;
+
+    setTimeout(() => {
+      if (Object.keys(this.userDetails).length===0) {
+        localStorage.removeItem("userId")
+        this._commonService.isLoggedIn.next(false);
+        this._router.navigate(['/'])
+        alert("Your session has been timed out. Please login again!")
+      }
+    }, 5000);
     // setTimeout(() => {
       this._userService.getPersonalData(userId).subscribe((e:any)=>{
+
         this.contacts=e.contacts || []
         this.allContacts=e.contacts || []
         this.userDetails=e
         this.loading=false
       })
-    // }, 2000);
+    // }, 6000);
   }
   userDetails:any={}
   contacts : any=[]
   allContacts:any = [];
 
 
-  
-
   setContacts(contact:any){
     this.allContacts.push(contact);
     let filterType = this._elemRef.nativeElement.querySelector('input[name="list-type"]:checked')?.value || "all";
     this.handleContactsType(filterType)
-    
-    
   }
 
   handleRemoveContact(name:any){
